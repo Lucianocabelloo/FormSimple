@@ -1,3 +1,4 @@
+import FormUser from "./components/FormUser"
 
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
 
   return (
     <>
-
+    <FormUser/>
     </>
   )
 }
