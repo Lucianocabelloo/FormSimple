@@ -10,8 +10,27 @@ import DialogContent from '@mui/joy/DialogContent';
 import Stack from '@mui/joy/Stack';
 import Add from '@mui/icons-material/Add';
 import { useState } from 'react';
+import {  useForm } from "react-hook-form"
+import { useEffect } from 'react';
+import Usuario from '../utils/FormClass';
 
 export default function BasicModalDialog() {
+
+  const [User, setUser] = useState([])
+
+    const {register, handleSubmit} = useForm()
+    const onSubmit = (data) => {
+      const newUser = new Usuario(undefined, data.Nombre, data.Apellido, data.Email, data.DNI);
+      setUser([...User, newUser]); 
+    }
+
+    useEffect(() => {
+      console.log(User);
+    }, [User]);
+
+
+
+  console.log(User)
 
   const [open, setOpen] = useState(false);
   return (
@@ -29,33 +48,34 @@ export default function BasicModalDialog() {
           <DialogTitle>Create new project</DialogTitle>
           <DialogContent>Fill in the information of the project.</DialogContent>
           <form
-            onSubmit={() => {
-              event.preventDefault();
-              setOpen(false);
-            }}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <Stack spacing={2}>
               <FormControl>
                 <FormLabel>Nombre</FormLabel>
-                <Input autoFocus required />
+                <Input {...register("Nombre")} autoFocus required />
               </FormControl>
               <FormControl>
                 <FormLabel>Apellido</FormLabel>
-                <Input required />
+                <Input {...register("Apellido")} required />
               </FormControl>
               <FormControl>
                 <FormLabel>Email</FormLabel>
-                <Input required />
+                <Input {...register("Email")} required />
               </FormControl>
               <FormControl>
                 <FormLabel>DNI</FormLabel>
-                <Input required />
+                <Input {...register("DNI")} required />
               </FormControl>
               <Button type="submit">Submit</Button>
             </Stack>
           </form>
         </ModalDialog>
       </Modal>
+
+      {
+        
+      }
     </React.Fragment>
   );
 }

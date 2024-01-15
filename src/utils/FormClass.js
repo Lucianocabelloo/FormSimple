@@ -1,4 +1,3 @@
-import { uuid } from "uuidv4";
 
 export default class Usuario {
     #codigo;
@@ -7,7 +6,7 @@ export default class Usuario {
     #email;
     #dni;
 
-    constructor(codigo = uuid(), nombre, apellido, email, dni){
+    constructor(codigo, nombre, apellido, email, dni){
         this.#codigo = codigo;
         this.#nombre = nombre;
         this.#apellido = apellido;
