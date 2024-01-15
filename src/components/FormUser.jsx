@@ -13,19 +13,23 @@ import { useState } from 'react';
 import {  useForm } from "react-hook-form"
 import { useEffect } from 'react';
 import Usuario from '../utils/FormClass';
+import uuid4 from "uuid4";
+
 
 export default function BasicModalDialog() {
+  
+  const initialUser = JSON.parse( localStorage.getItem("User")) || [];
 
-  const [User, setUser] = useState([])
+  const [User, setUser] = useState(initialUser)
 
     const {register, handleSubmit} = useForm()
     const onSubmit = (data) => {
-      const newUser = new Usuario(undefined, data.Nombre, data.Apellido, data.Email, data.DNI);
+      const newUser = new Usuario(uuid4(), data.Nombre, data.Apellido, data.Email, data.DNI);
       setUser([...User, newUser]); 
     }
 
     useEffect(() => {
-      console.log(User);
+      localStorage.setItem("User", JSON.stringify(User))
     }, [User]);
 
 
