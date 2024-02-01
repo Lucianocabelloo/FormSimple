@@ -82,7 +82,7 @@ export default function BasicModalDialog() {
         </ModalDialog>
       </Modal>
 
-      <FormList user={User} key={User[0].codigo}/>
+      <FormList user={User}/>
     </React.Fragment>
   );
 }
