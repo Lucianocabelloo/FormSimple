@@ -13,7 +13,7 @@ import { useState } from 'react';
 import {  useForm } from "react-hook-form"
 import { useEffect } from 'react';
 import Usuario from '../utils/FormClass';
-import uuid4 from "uuid4";
+import { FormList } from './FormList';
 
 
 export default function BasicModalDialog() {
@@ -24,7 +24,7 @@ export default function BasicModalDialog() {
 
     const {register, handleSubmit} = useForm()
     const onSubmit = (data) => {
-      const newUser = new Usuario(uuid4(), data.Nombre, data.Apellido, data.Email, data.DNI);
+      const newUser = new Usuario(data.Codigo, data.Nombre, data.Apellido, data.Email, data.DNI, data.Description);
       setUser([...User, newUser]); 
     }
 
@@ -34,7 +34,7 @@ export default function BasicModalDialog() {
 
 
 
-  console.log(User)
+
 
   const [open, setOpen] = useState(false);
   return (
@@ -44,13 +44,14 @@ export default function BasicModalDialog() {
         color="neutral"
         startDecorator={<Add />}
         onClick={() => setOpen(true)}
+        className=" addBtn"
       >
-        New project
+        Create New member
       </Button>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
-          <DialogTitle>Create new project</DialogTitle>
-          <DialogContent>Fill in the information of the project.</DialogContent>
+          <DialogTitle>Create new Member</DialogTitle>
+          <DialogContent>Fill in the information of the Member.</DialogContent>
           <form
             onSubmit={handleSubmit(onSubmit)}
           >
@@ -71,15 +72,17 @@ export default function BasicModalDialog() {
                 <FormLabel>DNI</FormLabel>
                 <Input {...register("DNI")} required />
               </FormControl>
+              <FormControl>
+                <FormLabel>Description</FormLabel>
+                <Input {...register("Description")} required />
+              </FormControl>
               <Button type="submit">Submit</Button>
             </Stack>
           </form>
         </ModalDialog>
       </Modal>
 
-      {
-        
-      }
+      <FormList user={User} key={User[0].codigo}/>
     </React.Fragment>
   );
 }
