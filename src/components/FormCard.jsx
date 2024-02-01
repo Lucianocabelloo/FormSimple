@@ -10,7 +10,12 @@ import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
 import { Sheet } from '@mui/joy';
 
-export default function FormCard() {
+export default function FormCard({data}) {
+
+    if (!data) {
+        return null; // o cualquier otro estado de carga o contenido predeterminado
+      }
+
   return (
     <Card
       sx={{
@@ -34,10 +39,9 @@ export default function FormCard() {
         >
           PRO
         </Chip>
-        <Typography level="title-lg">Josephine Blanton</Typography>
+        <Typography level="title-lg">{data.nombre} {data.apellido}</Typography>
         <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
-          Hello, this is my bio and I am a PRO member of MUI. I am a developer and I
-          love to code.
+          {data.description}
         </Typography>
         <Box
           sx={{
@@ -128,13 +132,13 @@ export default function FormCard() {
               <Typography level="body-xs" fontWeight="lg">
                 Email
               </Typography>
-              <Typography fontWeight="lg">Mail</Typography>
+              <Typography fontWeight="lg">{data.email}</Typography>
             </div>
             <div>
               <Typography level="body-xs" fontWeight="lg">
                 DNI
               </Typography>
-              <Typography fontWeight="lg">980</Typography>
+              <Typography fontWeight="lg">{data.dni}</Typography>
             </div>
           </Sheet>
       </CardContent>

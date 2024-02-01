@@ -13,7 +13,6 @@ import { useState } from 'react';
 import {  useForm } from "react-hook-form"
 import { useEffect } from 'react';
 import Usuario from '../utils/FormClass';
-import uuid4 from "uuid4";
 import { FormList } from './FormList';
 
 
@@ -25,7 +24,7 @@ export default function BasicModalDialog() {
 
     const {register, handleSubmit} = useForm()
     const onSubmit = (data) => {
-      const newUser = new Usuario(uuid4(), data.Nombre, data.Apellido, data.Email, data.DNI, data.Description);
+      const newUser = new Usuario(data.Codigo, data.Nombre, data.Apellido, data.Email, data.DNI, data.Description);
       setUser([...User, newUser]); 
     }
 
@@ -35,7 +34,7 @@ export default function BasicModalDialog() {
 
 
 
-  console.log(User)
+
 
   const [open, setOpen] = useState(false);
   return (
@@ -83,7 +82,7 @@ export default function BasicModalDialog() {
         </ModalDialog>
       </Modal>
 
-      <FormList user={User}/>
+      <FormList user={User} key={User[0].codigo}/>
     </React.Fragment>
   );
 }

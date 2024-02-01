@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-    <div className=" flex flex-row-reverse justify-end gap-5">
+    <div className=" flex flex-col-reverse justify-end gap-5 m-5 flex-wrap">
 
     <FormUser/>
     <FormCard/>
