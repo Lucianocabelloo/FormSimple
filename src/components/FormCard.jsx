@@ -2,15 +2,13 @@ import * as React from 'react';
 import Avatar from '@mui/joy/Avatar';
 import Chip from '@mui/joy/Chip';
 import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import ButtonGroup from '@mui/joy/ButtonGroup';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
-import CardOverflow from '@mui/joy/CardOverflow';
-import CardActions from '@mui/joy/CardActions';
+
 import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
+import { Sheet } from '@mui/joy';
 
 export default function FormCard() {
   return (
@@ -22,7 +20,7 @@ export default function FormCard() {
       }}
     >
       <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-        <Avatar src="/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
+        <Avatar src="https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png" sx={{ '--Avatar-size': '4rem' }} />
         <Chip
           size="sm"
           variant="soft"
@@ -114,6 +112,31 @@ export default function FormCard() {
             </SvgIcon>
           </IconButton>
         </Box>
+        <Sheet
+            sx={{
+              bgcolor: 'background.level1',
+              borderRadius: 'sm',
+              p: 1.5,
+              my: 1.5,
+              display: 'flex',
+              flexDirection: "column",
+              gap: 2,
+              '& > div': { flex: 1 },
+            }}
+          >
+            <div>
+              <Typography level="body-xs" fontWeight="lg">
+                Email
+              </Typography>
+              <Typography fontWeight="lg">Mail</Typography>
+            </div>
+            <div>
+              <Typography level="body-xs" fontWeight="lg">
+                DNI
+              </Typography>
+              <Typography fontWeight="lg">980</Typography>
+            </div>
+          </Sheet>
       </CardContent>
     </Card>
   );

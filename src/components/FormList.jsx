@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import FormCard from "./FormCard";
 
-export const FormList = () => {
+export const FormList = ({ user }) => {
   return (
-    <div>FormList</div>
-  )
-}
+    <div>
+      {user.map((data, index) => {
+        return <FormCard data={data} key={index} />;
+      })}
+    </div>
+  );
+};
