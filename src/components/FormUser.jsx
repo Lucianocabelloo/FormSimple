@@ -26,6 +26,7 @@ export default function BasicModalDialog() {
     const onSubmit = (data) => {
       const newUser = new Usuario(data.Codigo, data.Nombre, data.Apellido, data.Email, data.DNI, data.Description);
       setUser([...User, newUser]); 
+      alert("Hay un bug que para que aparezca la informacion se debe hacer f5, pero no lo pude solucionar me gustaria un feedback si es posible <3")
     }
 
     useEffect(() => {
